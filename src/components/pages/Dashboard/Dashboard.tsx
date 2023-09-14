@@ -28,43 +28,35 @@ const Dashboard: FC = () => {
 
   return (
     <>
-      <Stack
-        direction={'row'}
-        gap={3}
-        padding={4}
-        alignItems={'center'}
-        justifyContent={'space-between'}
-      >
-        <form>
-          <Stack direction={'row'} gap={3}>
-            <TextField
-              onChange={(event: any) => setPrompt(event.target.value)}
-              value={prompt}
-              placeholder="Type your message..."
-              size="small"
-              onClick={(event) => event.stopPropagation()}
-              onFocus={(event) => event.stopPropagation()}
-              style={{ width: '220px' }}
-            />
-            <Button
-              onClick={(event) => {
-                ask();
-                event.stopPropagation();
-              }}
-              variant="contained"
-              disabled={loading}
-              type="submit"
-            >
-              Ask
-            </Button>
-          </Stack>
-        </form>
-        <Stack direction={'row'}>
-          <Typography>
-            {!!response?.length && 'Response:'} {response}
-          </Typography>
-        </Stack>
-      </Stack>
+      <Container maxWidth="xl">
+        <Grid container spacing={4} pb={4} pt={4} alignContent={'center'}>
+          <Grid item md={4} xs={12}>
+            <form>
+              <Stack direction={'row'} gap={3}>
+                <TextField
+                  onChange={(event: any) => setPrompt(event.target.value)}
+                  value={prompt}
+                  placeholder="Type your message..."
+                  size="small"
+                  style={{ width: '220px' }}
+                />
+                <Button
+                  size="small"
+                  onClick={ask}
+                  variant="contained"
+                  disabled={loading}
+                  type="submit"
+                >
+                  Ask
+                </Button>
+              </Stack>
+            </form>
+          </Grid>
+          <Grid item md={8} xs={12} alignItems={'center'}>
+            <Typography style={{ marginTop: '10px' }}>{response}</Typography>
+          </Grid>
+        </Grid>
+      </Container>
       <Box component="main">
         <Container maxWidth="xl">
           <Grid container spacing={4} pb={4} pt={4}>
