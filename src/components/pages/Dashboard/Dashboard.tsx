@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { Box, Container, Grid, Stack, TextField, Typography, Button } from '@mui/material';
+import { Box, Container, Grid, Stack, TextField, Typography, Button, Link } from '@mui/material';
 import { TransactionsList } from '../../organisms/TransactionsList';
 import { BlocksList } from '../../organisms/BlocksList';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
@@ -82,9 +82,9 @@ const Dashboard: FC = () => {
       </Box>
       <Typography padding={4}>
         Created by{' '}
-        <a href="https://www.cristian-sfetcu.com" target="_blank">
+        <Link href="https://www.cristian-sfetcu.com" target="_blank">
           Cristian Sfetcu
-        </a>
+        </Link>
       </Typography>
     </>
   );

@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Chip,
   Link,
   Table,
   TableCell,
@@ -62,7 +63,7 @@ const TransactionsList: FC<TransactionsListProps> = ({ transactions, title, ...p
               </TableCell>
               <TableCell width={100}>
                 <AmountChip label={formatEtherWithUnit(transaction.value)} variant="outlined" />
-                {/* <Chip label={formatEtherWithUnit(transaction.value)} variant="outlined" /> */}
+                <Chip label={formatEtherWithUnit(transaction.value)} variant="outlined" />
               </TableCell>
             </TableRow>
           ))}

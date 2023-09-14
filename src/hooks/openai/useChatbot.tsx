@@ -48,7 +48,7 @@ const useChatbot = ({ setLoading, setResponse, prompt }: UseChatbotProps) => {
         messages: [
           {
             role: 'system',
-            content: 'Talk cordially. Start the conversation by sending a greeting message.',
+            content: 'Talk cordially',
           },
           {
             role: 'user',
