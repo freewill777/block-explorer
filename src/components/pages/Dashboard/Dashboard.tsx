@@ -14,12 +14,16 @@ const Dashboard: FC = () => {
   const [response, setResponse] = useState<string | null>('');
   const [loading, setLoading] = useState(false);
 
+  const { ask, startAsk } = useChatbot({ setLoading, setResponse, prompt });
+
   useEffect(() => {
     dispatch(fetchLatestBlocks());
     dispatch(fetchLatestTransactions());
   }, [dispatch]);
 
-  const { ask } = useChatbot({ setLoading, setResponse, prompt });
+  useEffect(() => {
+    startAsk({ __setLoading: setLoading, __setResponse: setResponse, __prompt: 'Hey there' });
+  }, []);
 
   const {
     latestBlocks: { data: latestBlocks },
@@ -38,7 +42,7 @@ const Dashboard: FC = () => {
                   value={prompt}
                   placeholder="Type your message..."
                   size="small"
-                  style={{ width: '220px' }}
+                  style={{ width: '250px' }}
                 />
                 <Button
                   size="small"

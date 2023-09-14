@@ -40,7 +40,29 @@ const useChatbot = ({ setLoading, setResponse, prompt }: UseChatbotProps) => {
     })();
   };
 
-  return { ask };
+  const startAsk = ({ __setLoading, __setResponse, __prompt }: any) => {
+    (async () => {
+      __setLoading(true);
+      const result = await openai.chat.completions.create({
+        model: 'gpt-4',
+        messages: [
+          {
+            role: 'system',
+            content: 'Talk cordially. Start the conversation by sending a greeting message.',
+          },
+          {
+            role: 'user',
+            content: __prompt,
+          },
+        ],
+        temperature: 0.8,
+        max_tokens: 1024,
+      });
+      __setResponse(result.choices[0].message.content);
+      __setLoading(false);
+    })();
+  };
+  return { ask, startAsk };
 };
 
 export default useChatbot;
